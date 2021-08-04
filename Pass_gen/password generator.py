@@ -13,7 +13,7 @@ if __name__ == "__main__":
     s.extend(list(s2))
     s.extend(list(s3))
     s.extend(list(s4))
-    f = open("C:/Users/Vinit/File/projects/Password gen/passwords.txt" , "a")
+    f = open("passwords.txt" , "a")
     print("Your password: ", end="" ,file = f)
     print("".join(random.sample(s, plen)) , file = f)
     f.close()
