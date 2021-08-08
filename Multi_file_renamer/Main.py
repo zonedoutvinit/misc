@@ -3,7 +3,7 @@ import os
 def main():
    i = 0
    # Path of the folder containing the files
-   path = "C:/Users/Vinit/Desktop/"
+   path = "# Path of the folder"
    for filename in os.listdir(path):
       my_dest ="newname" + str(i) + ".extension of the file"
       my_source = path + filename
