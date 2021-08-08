@@ -1,12 +1,13 @@
-from tkinter import *
+from tkinter import *   #For Gui components
 from tkinter import ttk
-import sqlite3 as db
-from tkcalendar import DateEntry
+import sqlite3 as db  #For DB
+from tkcalendar import DateEntry #For Calender GUI
 
 # this init the sqlite3 db connection 
 def init():
-    connectionObjn = db.connect("expense.db")
+    connectionObjn = db.connect("expense.db") #Connection obj with sqlite3 .db file
     curr = connectionObjn.cursor()
+    #Query
     query = '''
     create table if not exists expenses (
         date string,
@@ -25,6 +26,7 @@ def submit():
     Etable.insert('','end',values=values)
     connectionObjn = db.connect("expense.db")
     curr = connectionObjn.cursor()
+    #Query
     query = '''
     INSERT INTO expenses VALUES 
     (?, ?, ?, ?)
@@ -36,6 +38,7 @@ def submit():
 def view():
     connectionObjn = db.connect("expense.db")
     curr = connectionObjn.cursor()
+    #Queries
     query = '''
      select * from expenses
     '''
