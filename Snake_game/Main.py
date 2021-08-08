@@ -61,6 +61,7 @@ def gameloop():
             Your_score(Lenght_of_snake - 1)
             pygame.display.update()
             for event in pygame.event.get():
+                                        #Key controls for Quitting or Restarting gameloop
                 if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_q:
                             gameover = True
@@ -70,7 +71,8 @@ def gameloop():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 gameover = True
-            if event.type == pygame.KEYDOWN:
+                                        #Key controls for snake
+            if event.type == pygame.KEYDOWN:  
                 if event.key == pygame.K_LEFT:
                     x1_change = -snake_blk
                     y1_change = 0
