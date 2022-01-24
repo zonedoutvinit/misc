@@ -1,10 +1,22 @@
 const express = require("express");
-const app = express()
+const app = express();
+const connectDB = require("./models/config");
 
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
+app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: false }));
 
-app.use('/api/users', require('./routes/apis/users'))
+connectDB();
 
+app.get("/", (req, res) => {
+  res.render("index");
+});
 
-app.listen(3000)
+//api register new user & login
+const regRouter = require("./routes/register");
+app.use("/register", regRouter);
+const loginRouter = require("./routes/login");
+app.use("/login", loginRouter);
+const profRouter = require("./routes/profile");
+app.use("/profile", profRouter);
+
+app.listen(4000);
