@@ -1,10 +1,10 @@
 {
   "name": "express_employee_management",
   "version": "1.0.0",
+  "description": "",
   "main": "server.js",
   "scripts": {
-    "serverStart": "nodemon server.js",
-    "start": "node server.js"
+    "serverStart": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +16,5 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.7",
     "nodemon": "^2.0.15"
-  },
-  "devDependencies": {},
-  "description": ""
+  }
 }
