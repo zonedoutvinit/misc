@@ -4,7 +4,6 @@ const admin = require("../models/admin");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
-const auth = require("../middleware/authenToken");
 
 router.get("/", (req, res) => {
   res.render("users/login");

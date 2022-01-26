@@ -31,7 +31,8 @@ router.post("/view", auth, (req, res) => {
   emp
     .where("name")
     .equals(name)
-    .where("adminID").equals(ID)
+    .where("adminID")
+    .equals(ID)
     .exec()
     .then((result) => {
       // if (Object.values(result).includes(null)) {
@@ -54,7 +55,12 @@ router.put("/update", auth, async (req, res) => {
   const changes = req.body.newname;
   const ID = req.user.adminID;
   try {
-    const newEmp = await emp.where("name").equals(filter).where("adminID").equals(ID).select("_id");
+    const newEmp = await emp
+      .where("name")
+      .equals(filter)
+      .where("adminID")
+      .equals(ID)
+      .select("_id");
     //console.log(newEmp);
     const postUpdate = await update(newEmp, changes);
     res.send(postUpdate);
@@ -69,7 +75,12 @@ router.delete("/delete", auth, async (req, res) => {
   const adminID = req.user.adminID;
   //console.log(deleteEmp);
   try {
-    const ID = await emp.where("name").equals(deleteEmp).where("adminID").equals(adminID).select("_id");
+    const ID = await emp
+      .where("name")
+      .equals(deleteEmp)
+      .where("adminID")
+      .equals(adminID)
+      .select("_id");
     //console.log(ID);
     const postDelete = await del(ID);
     res.send(postDelete);
