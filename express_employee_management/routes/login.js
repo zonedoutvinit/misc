@@ -11,6 +11,12 @@ router.get("/", (req, res) => {
 });
 
 router.post("/auth", async (req, res) => {
+  // res.set({
+  //   "Access-Control-Allow-Headers":
+  //     "X-Requested-With,content-type, Authorization, authorization",
+  //   "Access-Control-Expose-Headers":
+  //     "X-Requested-With,content-type, Authorization, authorization",
+  // });
   admin
     .find({ uname: req.body.uname, passw: req.body.passw })
     //.find({ uname: req.body.uname } && { passw: req.body.passw })
@@ -19,26 +25,20 @@ router.post("/auth", async (req, res) => {
       if (user.length < 1) {
         res.json({ message: "no user found" });
       } else {
-        const token = generateAccessToken({ uname: req.body.uname });
-        //console.log(token);
-        //res.json(token);
-
-        console.log({ token });
+        const token = generateAccessToken(req.body.uname, user[0]._id);
+        console.log(token);
+        // res.header.token = token;
+        res.append("authorization", token);
         //res.send(token);
+        res.redirect(`/profile`);
       }
-      res.redirect(`/profile/${user[0]._id}`);
     });
 });
 
-// router.get("/protect/:id", auth, (req, res) => {
-//   // const token = req.headers;
-//   // console.log(token);
-//   res.json({ mesage: "hidden message" });
-//   //res.redirect(`profile/${user[0]._id}`);
-// });
-
-function generateAccessToken(username) {
-  return jwt.sign(username, process.env.SECRET_KEY, { expiresIn: "1800s" });
+function generateAccessToken(username, adminID) {
+  return jwt.sign({ username, adminID }, process.env.SECRET_KEY, {
+    expiresIn: "10hr",
+  });
 }
 
 module.exports = router;

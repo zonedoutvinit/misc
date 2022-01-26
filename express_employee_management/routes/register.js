@@ -17,7 +17,7 @@ router.post("/", (req, res) => {
     .save()
     .then((result) => {
       //res.json({ new: "user" });
-      res.redirect(`profile`);
+      res.redirect(`login`);
     })
     .catch((error) => {
       res.json(error);

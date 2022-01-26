@@ -10,7 +10,6 @@
     <div>
         <p>insert emp</p>
         <form action="/profile/new" method="POST">
-            <input type="hidden" name="id" value="<%= id %>">
             Input Name
             <input type="text" name="name" value=""><br>
             Input Age
@@ -21,7 +20,6 @@
     <div>
         <p>view emp</p>
         <form action="/profile/view" method="POST">
-            <input type="hidden" name="id" value="<%= id %>">
             Input Name
             <input type="text" name="name" value=""><br>
             Input Age
@@ -32,7 +30,6 @@
     <div>
         <p>update emp</p>
         <form action="/profile/update/" method="POST">
-            <input type="hidden" name="id" value="<%= id %>">
             Input Name
             <input type="text" name="name" value=""><br>
             Input new Name
@@ -43,7 +40,6 @@
     <div>
         <p>delete</p>
         <form action="/profile/delete" method="DELETE">
-            <input type="hidden" name="id" value="<%= id %>">
             Input Name
             <input type="text" name="name" value=""><br>
             <input type="submit" value="Enter">
